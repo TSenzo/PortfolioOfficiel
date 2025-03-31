@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -43,6 +42,11 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    --hacking-bg: 150 100% 3%;
+    --hacking-text: 150 100% 60%;
+    --hacking-glow: 0 0 5px rgba(0, 255, 0, 0.7);
+    --hacking-scan-line: rgba(0, 255, 0, 0.1);
   }
 
   .dark {
@@ -100,13 +104,95 @@
     background-image: var(--grid-pattern);
   }
   
-  /* Theme transition class for smooth theme changes */
   .theme-transition {
     @apply transition-colors duration-300;
   }
   
   .theme-transition * {
     @apply transition-colors duration-300;
+  }
+  
+  body.hacking-mode {
+    background: hsl(var(--hacking-bg));
+    color: hsl(var(--hacking-text));
+    font-family: 'Courier New', monospace;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  body.hacking-mode::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      var(--hacking-scan-line),
+      var(--hacking-scan-line) 2px,
+      transparent 2px,
+      transparent 4px
+    );
+    pointer-events: none;
+    z-index: 9999;
+    animation: scanlines 8s linear infinite;
+  }
+
+  body.hacking-mode::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: hsl(var(--hacking-text));
+    opacity: 0.3;
+    z-index: 9999;
+    animation: scanning 4s linear infinite;
+  }
+
+  body.hacking-mode h1, 
+  body.hacking-mode h2, 
+  body.hacking-mode h3, 
+  body.hacking-mode h4, 
+  body.hacking-mode h5, 
+  body.hacking-mode h6 {
+    color: hsl(var(--hacking-text));
+    text-shadow: var(--hacking-glow);
+    letter-spacing: 1px;
+  }
+
+  body.hacking-mode .cyber-card {
+    border: 1px solid hsl(var(--hacking-text));
+    box-shadow: var(--hacking-glow);
+    background: hsl(var(--hacking-bg) / 0.8);
+  }
+
+  body.hacking-mode p, 
+  body.hacking-mode span, 
+  body.hacking-mode li {
+    font-family: 'Courier New', monospace;
+  }
+
+  body.hacking-mode input,
+  body.hacking-mode textarea {
+    background: hsl(var(--hacking-bg));
+    color: hsl(var(--hacking-text));
+    border-color: hsl(var(--hacking-text) / 0.5);
+  }
+
+  body.hacking-mode button:not(.preserveStyle) {
+    background: transparent;
+    border: 1px solid hsl(var(--hacking-text));
+    color: hsl(var(--hacking-text));
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  body.hacking-mode button:not(.preserveStyle):hover {
+    background: hsl(var(--hacking-text) / 0.1);
+    box-shadow: var(--hacking-glow);
   }
 }
 
@@ -147,7 +233,6 @@
     @apply opacity-100 translate-y-0;
   }
   
-  /* Enhanced animations */
   .animate-reveal-left {
     @apply opacity-0 -translate-x-16 transition-all duration-700;
   }
@@ -168,6 +253,45 @@
   .animate-scale.animated {
     @apply opacity-100 scale-100;
   }
+  
+  @keyframes scanlines {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 100vh; }
+  }
+
+  @keyframes scanning {
+    0% { transform: translateY(-5px); }
+    70% { transform: translateY(100vh); }
+    70.1% { transform: translateY(-5px); }
+    100% { transform: translateY(-5px); }
+  }
+
+  @keyframes typewriter {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+
+  .hacking-text {
+    color: hsl(var(--hacking-text));
+    text-shadow: var(--hacking-glow);
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0 auto;
+    animation: typewriter 2s steps(40, end) forwards;
+  }
+
+  .neon-pulse {
+    animation: neon-pulse 1.5s ease-in-out infinite alternate;
+  }
+
+  @keyframes neon-pulse {
+    from {
+      box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ff0000, 0 0 20px #ff0000;
+    }
+    to {
+      box-shadow: 0 0 10px #fff, 0 0 15px #ff0080, 0 0 20px #ff0080, 0 0 25px #ff0080;
+    }
+  }
 }
 
 :root {
@@ -178,4 +302,48 @@
 .dark {
   --grid-pattern: linear-gradient(rgba(155, 135, 245, 0.1) 1px, transparent 1px), 
                  linear-gradient(90deg, rgba(155, 135, 245, 0.1) 1px, transparent 1px);
+}
+
+.hacking-container {
+  display: none;
+}
+
+body.hacking-mode .hacking-container {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 100;
+  padding: 2rem;
+  font-family: 'Courier New', monospace;
+  color: hsl(var(--hacking-text));
+  overflow: auto;
+}
+
+.command-line {
+  display: flex;
+  margin-bottom: 0.5rem;
+}
+
+.command-line::before {
+  content: "> ";
+  margin-right: 0.5rem;
+  color: hsl(var(--hacking-text));
+}
+
+.cursor {
+  width: 0.5rem;
+  height: 1rem;
+  background-color: hsl(var(--hacking-text));
+  display: inline-block;
+  margin-left: 0.25rem;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }

@@ -12,6 +12,7 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ThemeToggle from "@/components/ThemeToggle";
 import ParticlesBackground from "@/components/ParticlesBackground";
+import HackingTerminal from "@/components/HackingTerminal";
 
 const Index = () => {
   useEffect(() => {
@@ -54,6 +55,7 @@ const Index = () => {
     <div className="flex flex-col min-h-screen">
       <ThemeToggle />
       <ParticlesBackground />
+      <HackingTerminal />
       <Header />
       
       <main className="flex-grow">
@@ -70,6 +72,6 @@ const Index = () => {
       <Footer />
     </div>
   );
-};
+}
 
 export default Index;
