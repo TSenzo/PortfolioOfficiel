@@ -11,6 +11,7 @@ import Languages from "@/components/Languages";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ThemeToggle from "@/components/ThemeToggle";
+import ParticlesBackground from "@/components/ParticlesBackground";
 
 const Index = () => {
   useEffect(() => {
@@ -22,11 +23,37 @@ const Index = () => {
     
     // Set page title
     document.title = "Enzo Dal Corso | Portfolio";
+    
+    // Initialize scroll animations
+    const animateOnScroll = () => {
+      const elements = document.querySelectorAll('.animate-on-scroll, .animate-reveal-left, .animate-reveal-right, .animate-scale');
+      
+      elements.forEach((element) => {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementBottom = element.getBoundingClientRect().bottom;
+        
+        // Check if element is in viewport
+        if (elementTop < window.innerHeight - 100 && elementBottom > 0) {
+          element.classList.add('animated');
+        }
+      });
+    };
+    
+    // Run on initial load
+    animateOnScroll();
+    
+    // Add scroll event listener
+    window.addEventListener('scroll', animateOnScroll);
+    
+    return () => {
+      window.removeEventListener('scroll', animateOnScroll);
+    };
   }, []);
 
   return (
     <div className="flex flex-col min-h-screen">
       <ThemeToggle />
+      <ParticlesBackground />
       <Header />
       
       <main className="flex-grow">

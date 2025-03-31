@@ -1,23 +1,45 @@
 
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "@/hooks/useTheme";
+import { cn } from "@/lib/utils";
 
 export default function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  
+  // Prevent hydration mismatch
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <Button 
       variant="ghost" 
       size="icon" 
       onClick={toggleTheme}
-      className="fixed top-4 right-4 z-50 rounded-full glass p-2 hover:bg-accent/10"
+      className="fixed top-4 right-4 z-50 rounded-full glass p-0 hover:bg-accent/10 overflow-hidden group"
+      aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
     >
-      {theme === "light" ? (
-        <Moon className="h-6 w-6 text-neon-purple transition-all" />
-      ) : (
-        <Sun className="h-6 w-6 text-neon-blue transition-all" />
-      )}
+      <div className="relative w-10 h-10 flex items-center justify-center">
+        <Sun 
+          className={cn(
+            "absolute h-6 w-6 transition-all duration-500 rotate-0 scale-100",
+            theme === "dark" ? "rotate-90 scale-0" : "text-neon-blue"
+          )} 
+        />
+        <Moon 
+          className={cn(
+            "absolute h-6 w-6 transition-all duration-500 rotate-90 scale-0",
+            theme === "dark" ? "rotate-0 scale-100 text-neon-purple" : ""
+          )} 
+        />
+      </div>
       <span className="sr-only">Toggle theme</span>
     </Button>
   );

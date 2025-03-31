@@ -99,6 +99,15 @@
     background-size: 50px 50px;
     background-image: var(--grid-pattern);
   }
+  
+  /* Theme transition class for smooth theme changes */
+  .theme-transition {
+    @apply transition-colors duration-300;
+  }
+  
+  .theme-transition * {
+    @apply transition-colors duration-300;
+  }
 }
 
 @layer utilities {
@@ -131,11 +140,33 @@
   }
   
   .animate-on-scroll {
-    @apply opacity-0;
+    @apply opacity-0 translate-y-8 transition-all duration-700;
   }
   
   .animate-on-scroll.animated {
-    @apply animate-fade-in;
+    @apply opacity-100 translate-y-0;
+  }
+  
+  /* Enhanced animations */
+  .animate-reveal-left {
+    @apply opacity-0 -translate-x-16 transition-all duration-700;
+  }
+  
+  .animate-reveal-right {
+    @apply opacity-0 translate-x-16 transition-all duration-700;
+  }
+  
+  .animate-reveal-left.animated,
+  .animate-reveal-right.animated {
+    @apply opacity-100 translate-x-0;
+  }
+  
+  .animate-scale {
+    @apply opacity-0 scale-95 transition-all duration-500;
+  }
+  
+  .animate-scale.animated {
+    @apply opacity-100 scale-100;
   }
 }
 
