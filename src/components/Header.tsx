@@ -52,7 +52,7 @@ export default function Header() {
         <a href="#home" className="text-2xl font-bold neon-text">EDC</a>
         
         {/* Desktop Menu */}
-        <nav className="hidden md:flex items-center space-x-8">
+        <nav className="hidden md:flex items-center space-x-8 justify-start">
           {navItems.map((item) => (
             <a
               key={item.label}
