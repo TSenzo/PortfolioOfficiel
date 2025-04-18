@@ -1,7 +1,5 @@
-
 import { useState, useEffect } from "react";
-import { Menu, X, Terminal } from "lucide-react";
-import { useHackingMode } from "@/hooks/useHackingMode";
+import { Menu, X } from "lucide-react";
 
 interface NavItem {
   label: string;
@@ -22,7 +20,6 @@ const navItems: NavItem[] = [
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { hackingMode, toggleHackingMode } = useHackingMode();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,14 +42,13 @@ export default function Header() {
   };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-      isScrolled ? "glass py-3" : "py-5"
-    }`}>
+    <header className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${isScrolled ? "glass py-3" : "py-5"}`}>
       <div className="container mx-auto px-4 flex justify-between items-center">
+        {/* Logo */}
         <a href="#home" className="text-2xl font-bold neon-text">EDC</a>
         
         {/* Desktop Menu */}
-        <nav className="hidden md:flex items-center space-x-8 justify-start">
+        <nav className="hidden md:flex items-center space-x-8">
           {navItems.map((item) => (
             <a
               key={item.label}
@@ -63,36 +59,10 @@ export default function Header() {
               {item.label}
             </a>
           ))}
-          
-          {/* Hacking mode toggle button */}
-          <button
-            onClick={toggleHackingMode}
-            className={`p-2 rounded-full transition-all duration-300 ${
-              hackingMode
-                ? 'bg-hacking-text text-hacking-bg'
-                : 'border border-foreground/20 hover:border-neon-blue hover:text-neon-blue'
-            }`}
-            aria-label={hackingMode ? "Désactiver le mode hacking" : "Activer le mode hacking"}
-          >
-            <Terminal size={20} />
-          </button>
         </nav>
         
         {/* Mobile Menu Button */}
         <div className="md:hidden flex items-center space-x-4">
-          {/* Hacking mode toggle for mobile */}
-          <button
-            onClick={toggleHackingMode}
-            className={`p-2 rounded-full transition-all duration-300 ${
-              hackingMode
-                ? 'bg-hacking-text text-hacking-bg'
-                : 'border border-foreground/20 hover:border-neon-blue hover:text-neon-blue'
-            }`}
-            aria-label={hackingMode ? "Désactiver le mode hacking" : "Activer le mode hacking"}
-          >
-            <Terminal size={18} />
-          </button>
-          
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="text-foreground hover:text-neon-blue transition-colors"

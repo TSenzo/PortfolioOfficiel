@@ -15,17 +15,17 @@ const languages: Language[] = [
   },
   {
     name: "Anglais",
-    level: 90,
-    description: "Courant - TOEIC 950"
+    level: 72,
+    description: "Certification ESE – European School of English, avril 2024 – Niveau B1+"
   },
   {
     name: "Espagnol",
-    level: 60,
-    description: "Intermédiaire"
+    level: 45,
+    description: "Intermédiaire faible"
   },
   {
-    name: "Allemand",
-    level: 30,
+    name: "Italien",
+    level: 25,
     description: "Notions de base"
   }
 ];

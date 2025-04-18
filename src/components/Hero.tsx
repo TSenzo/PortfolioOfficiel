@@ -21,8 +21,7 @@ export default function Hero() {
         </h1>
         
         <p className="text-lg md:text-xl max-w-2xl mx-auto mb-10 text-muted-foreground">
-          Développeur passionné par les expériences utilisateur innovantes 
-          et les interfaces du futur.
+        Coder le présent, imaginer le futur.
         </p>
         
         <div className="cyber-card w-fit mx-auto p-0.5">

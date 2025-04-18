@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 
 interface Job {
@@ -11,39 +10,39 @@ interface Job {
 
 const experiences: Job[] = [
   {
-    period: "2022 - Présent",
-    title: "Développeur Front-end Senior",
-    company: "TechFuture",
-    description: "Développement d'applications web innovantes pour des clients internationaux.",
+    period: "2024 - 2025",
+    title: "Apprenti Développeur Web",
+    company: "GIP FCIP de l’Académie de Toulouse (31)",
+    description: "Développement et intégration de fonctionnalités liées à la gestion des utilisateurs et des données dans un système de gestion d'information pour un organisme de formation.",
     achievements: [
-      "Création d'une interface utilisateur avec React et TypeScript",
-      "Implémentation d'animations et transitions fluides avec GSAP",
-      "Optimisation des performances et accessibilité",
-      "Collaboration avec les designers pour créer des interfaces intuitives"
+      "Création d'un système d'authentification et de connexion sécurisée avec vérification des identifiants et génération de tokens JWT.",
+      "Développement d'un système de requêtes dynamiques aux API d'Yparéo pour la consultation et l'importation des données.",
+      "Optimisation des performances et gestion des erreurs liées à l'importation des données dans la base de données locale.",
+      "Mise en place d'une interface de gestion des mots de passe avec hachage sécurisé via bcrypt."
     ]
   },
   {
-    period: "2020 - 2022",
-    title: "Développeur Full Stack",
-    company: "WebInnovate",
-    description: "Conception et développement d'applications web complètes.",
+    period: "Mai-Juin 2023",
+    title: "Stagiaire Administrateur Réseau",
+    company: "Pôle Systèmes d’Informations - Mairie de Colomiers (31)",
+    description: "Gestion des droits d'accès, configuration des équipements réseau et support technique.",
     achievements: [
-      "Développement de solutions e-commerce avec React et Node.js",
-      "Intégration de systèmes de paiement et CRM",
-      "Mise en place d'architectures cloud scalables",
-      "Développement d'API RESTful"
+      "Gestion des droits d'accès pour les utilisateurs au sein du réseau.",
+      "Configuration et maintenance des systèmes réseaux.",
+      "Résolution des incidents techniques et assistance aux utilisateurs.",
+      "Mise à jour et installation de logiciels nécessaires à la bonne gestion des systèmes."
     ]
   },
   {
-    period: "2018 - 2020",
-    title: "Développeur Junior",
-    company: "StartDigital",
-    description: "Participation au développement de sites web et applications pour startups.",
+    period: "Juillet-Août 2022",
+    title: "Employé Commercial",
+    company: "Carrefour Market, Vic-Fezensac (32)",
+    description: "Gestion des rayons et du service client, principalement au sein du secteur boulangerie et des rayons de produits alimentaires.",
     achievements: [
-      "Intégration de designs responsive avec HTML, CSS et JavaScript",
-      "Développement de fonctionnalités front-end avec Vue.js",
-      "Participation aux revues de code et amélioration continue",
-      "Collaboration avec l'équipe de développement"
+      "Préparation des produits de boulangerie et gestion des stocks.",
+      "Mise en rayon des produits alimentaires et respect des normes d'hygiène.",
+      "Service client en caisse et gestion des demandes en magasin.",
+      "Organisation de l'espace de vente et maintien de la propreté des rayons."
     ]
   }
 ];

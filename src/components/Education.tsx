@@ -10,22 +10,22 @@ interface Education {
 
 const educations: Education[] = [
   {
-    period: "2021 - 2023",
-    degree: "Master en Développement Web",
-    institution: "École Supérieure du Digital",
-    description: "Spécialisation en développement front-end et expérience utilisateur."
+    period: "2024 - 2025",
+    degree: "Licence 3 Vaucanson Sciences pour l'Ingénieur",
+    institution: "Ipst-Cnam Toulouse",
+    description: "Formation pluridisciplinaire alliant mécanique, électronique, informatique et mathématiques appliquées, avec un fort accent sur les technologies et méthodes d’ingénierie."
   },
   {
-    period: "2018 - 2021",
-    degree: "Licence en Informatique",
-    institution: "Université de Lyon",
-    description: "Fondamentaux de l'informatique, algorithmes, programmation et bases de données."
+    period: "2022 - 2024",
+    degree: "BTS Systèmes numériques option A informatique et réseaux",
+    institution: "Lycée général et technologique international Victor Hugo Colomiers",
+    description: "Formation axée sur l'administration des systèmes et réseaux, le développement logiciel et la gestion de la sécurité informatique, avec une approche pratique sur les technologies de communication."
   },
   {
-    period: "2016 - 2018",
-    degree: "BTS Services Informatiques aux Organisations",
-    institution: "Lycée Technique de Lyon",
-    description: "Option Solutions Logicielles et Applications Métiers."
+    period: "2020 - 2022",
+    degree: "Baccalauréat STI2D, spécialité Systèmes d'Information et Numérique",
+    institution: "Lycée polyvalent Le Garros Auch",
+    description: "Formation centrée sur la conception, le développement et la gestion des systèmes d'information numériques, ainsi que sur la programmation, les réseaux et la gestion de bases de données."
   }
 ];
 

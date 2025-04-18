@@ -1,10 +1,10 @@
-
 import { useState, useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Github, Linkedin, Mail, Send } from "lucide-react";
+import { Github, Linkedin, Mail, Send, Download } from "lucide-react"; // Ajout de l'icône Download
+import emailjs from "emailjs-com"; // Import de EmailJS
 
 export default function Contact() {
   const { toast } = useToast();
@@ -45,15 +45,31 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      toast({
-        title: "Message envoyé !",
-        description: "Merci pour votre message, je vous répondrai dès que possible.",
-      });
-      setFormData({ name: "", email: "", message: "" });
-    }, 1500);
+    // Envoi de l'email via EmailJS
+    emailjs.send(
+      "service_h5pmhq3", // Remplacer par ton ID de service EmailJS
+      "template_xtrtg9y", // Remplacer par ton ID de template EmailJS
+      formData, // Données du formulaire
+      "4k397SMNXw-aJhQzE" // Remplacer par ton ID utilisateur EmailJS
+    ).then(
+      (response) => {
+        console.log("Email envoyé", response);
+        setIsSubmitting(false);
+        toast({
+          title: "Message envoyé !",
+          description: "Merci pour votre message, je vous répondrai dès que possible.",
+        });
+        setFormData({ name: "", email: "", message: "" });
+      },
+      (error) => {
+        console.error("Erreur lors de l'envoi", error);
+        setIsSubmitting(false);
+        toast({
+          title: "Erreur",
+          description: "Une erreur est survenue lors de l'envoi du message.",
+        });
+      }
+    );
   };
 
   return (
@@ -127,11 +143,11 @@ export default function Contact() {
                 <div>
                   <h4 className="font-semibold mb-2">Email</h4>
                   <a 
-                    href="mailto:contact@enzodal.corso" 
+                    href="mailto:enzo.dalcorso01@gmail.com" 
                     className="text-neon-blue dark:text-neon-purple hover:underline flex items-center"
                   >
                     <Mail className="h-4 w-4 mr-2" />
-                    contact@enzodal.corso
+                    enzo.dalcorso01@gmail.com
                   </a>
                 </div>
                 
@@ -139,7 +155,7 @@ export default function Contact() {
                   <h4 className="font-semibold mb-2">Réseaux Sociaux</h4>
                   <div className="flex space-x-4">
                     <a 
-                      href="https://github.com" 
+                      href="https://github.com/TSenzo" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       aria-label="GitHub"
@@ -148,7 +164,7 @@ export default function Contact() {
                       <Github className="h-6 w-6" />
                     </a>
                     <a 
-                      href="https://linkedin.com" 
+                      href="https://www.linkedin.com/in/enzo-dal-corso-52910225b/?originalSubdomain=fr" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       aria-label="LinkedIn"
@@ -164,14 +180,14 @@ export default function Contact() {
             <div className="mt-10">
               <h4 className="font-semibold mb-4">Télécharger mon CV</h4>
               <Button className="w-full cyber-card p-0 overflow-hidden">
-                <div className="flex items-center justify-center space-x-2 bg-neon-purple/10 hover:bg-neon-purple/20 w-full h-full px-4 py-2.5 transition-all">
+                <a
+                  href="./public/CV_Enzo_DalCorso.pdf" // Chemin vers le fichier PDF dans le dossier public
+                  download
+                  className="flex items-center justify-center space-x-2 bg-neon-purple/10 hover:bg-neon-purple/20 w-full h-full px-4 py-2.5 transition-all"
+                >
                   <span>Télécharger CV</span>
-                  <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M7 10L12 15L17 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M12 15V3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </div>
+                  <Download className="h-4 w-4" />
+                </a>
               </Button>
             </div>
           </div>
