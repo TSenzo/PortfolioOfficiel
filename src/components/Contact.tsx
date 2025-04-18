@@ -47,10 +47,10 @@ export default function Contact() {
     
     // Envoi de l'email via EmailJS
     emailjs.send(
-      "service_h5pmhq3", // Remplacer par ton ID de service EmailJS
-      "template_xtrtg9y", // Remplacer par ton ID de template EmailJS
+      "", // Remplacer par ton ID de service EmailJS
+      "", // Remplacer par ton ID de template EmailJS
       formData, // Données du formulaire
-      "4k397SMNXw-aJhQzE" // Remplacer par ton ID utilisateur EmailJS
+      "" // Remplacer par ton ID utilisateur EmailJS
     ).then(
       (response) => {
         console.log("Email envoyé", response);
