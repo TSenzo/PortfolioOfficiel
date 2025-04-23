@@ -184,10 +184,10 @@ export default function HackingTerminal() {
 
   // Initialize audio
   useEffect(() => {
-    audioRef.current = new Audio('/typing.mp3');
+    audioRef.current = new Audio('/typing.wav');
     audioRef.current.volume = 0.2;
     
-    beepRef.current = new Audio('/beep.mp3');
+    beepRef.current = new Audio('/beep.wav');
     beepRef.current.volume = 0.15;
     
     return () => {
