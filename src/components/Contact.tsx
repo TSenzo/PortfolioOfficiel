@@ -181,7 +181,7 @@ export default function Contact() {
               <h4 className="font-semibold mb-4">Télécharger mon CV</h4>
               <Button className="w-full cyber-card p-0 overflow-hidden">
                 <a
-                  href="./public/CV_Enzo_DalCorso.pdf" // Chemin vers le fichier PDF dans le dossier public
+                  href="/CV_Enzo_DalCorso.pdf" // Chemin vers le fichier PDF dans le dossier public
                   download
                   className="flex items-center justify-center space-x-2 bg-neon-purple/10 hover:bg-neon-purple/20 w-full h-full px-4 py-2.5 transition-all"
                 >
