@@ -46,7 +46,7 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${isScrolled ? "glass py-3 backdrop-blur-lg" : "py-5"
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${isScrolled ? "bg-black/90 py-3 backdrop-blur-lg" : "bg-black/80 py-5"
         }`}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
