@@ -16,21 +16,21 @@ const projects: Project[] = [
     title: "IMMOBLADE",
     description: "Application web développée pour l'entreprise IMMOBLADE, spécialisée dans les vitrages de protection solaire. L'application collecte et analyse les données de flux solaire, température et luminosité dans le bâtiment du lycée Victor Hugo, équipé des solutions IMMOBLADE. L'objectif est d'évaluer l'efficacité des vitrages solaires en les comparant à des bâtiments classiques non équipés.",
     tags: ["Vue.js", "Node.js", "MongoDB", "Vuex", "API REST", "Suivi énergétique"],
-    image: "/immoblade.png",
+    image: "/immoblade.webp",
     githubLink: "https://github.com/TSenzo/IMMOBLADE-Projet-BTS-"
   },
   {
     title: "Plan Financier",
     description: "Finance Glide est un assistant personnel développé en TypeScript pour la gestion de budget. Il permet de suivre ses finances, planifier ses objectifs, et visualiser ses revenus et dépenses. Un outil complet et intuitif pour reprendre le contrôle de son portefeuille.",
     tags: ["TypeScript", "Simulation", "Finance"],
-    image: "/finance.png",
+    image: "/finance.webp",
     githubLink: "https://github.com/TSenzo/Plan-financier"
   },
   {
     title: "InnoTech",
     description: "Site vitrine pour InnoTech, une entreprise proposant une large gamme de services informatiques : réparation, cybersécurité, développement logiciel, et administration réseau. Une solution clé en main pour optimiser et sécuriser les infrastructures numériques.",
     tags: ["HTML", "CSS", "JavaScript", "Réparation informatique", "Cybersécurité", "Développement logiciel", "Réseaux", "Assistance informatique"],
-    image: "/innotech.png",
+    image: "/innotech.webp",
     githubLink: "https://github.com/TSenzo/TSenzo.github.io",
     demoLink: "https://tsenzo.github.io/"
   },
@@ -38,7 +38,7 @@ const projects: Project[] = [
     title: "EnzoWeb Studio (en cours)",
     description: "Développement en cours d'un site vitrine professionnel pour EnzoWeb Studio. Design épuré, responsive et pensé pour mettre en valeur les services de création web.",
     tags: ["HTML", "CSS", "JavaScript"],
-    image: "/EnzoWeb.png",
+    image: "/EnzoWeb.webp",
     githubLink: "https://github.com/TSenzo/EnzoWeb"
   }
 ];
