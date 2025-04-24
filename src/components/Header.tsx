@@ -46,8 +46,9 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${isScrolled ? "bg-black/90 py-3 backdrop-blur-lg" : "bg-black/80 py-5"
-        }`}
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+        isScrolled ? "bg-black/90 py-3 backdrop-blur-lg" : "bg-black/90 py-5"
+      }`}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         {/* Logo */}
@@ -88,7 +89,9 @@ export default function Header() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: "-100%", opacity: 0 }}
             transition={{ duration: 0.4 }}
-            className="fixed inset-0 z-50 glass backdrop-blur-lg h-screen overflow-y-auto shadow-lg"
+            className={`fixed inset-0 z-50 ${
+              isScrolled ? "bg-black/90" : "bg-black/90"
+            } backdrop-blur-lg h-screen overflow-y-auto shadow-lg`}
           >
             {/* Close button */}
             <div className="flex justify-end px-6 py-6">
@@ -107,7 +110,9 @@ export default function Header() {
                   key={item.label}
                   href={item.href}
                   onClick={handleNavClick}
-                  className={`text-xl font-medium text-foreground hover:text-neon-blue transition-colors ${activeLink === item.href ? "text-neon-blue" : ""}`}
+                  className={`text-xl font-medium text-foreground hover:text-neon-blue transition-colors ${
+                    activeLink === item.href ? "text-neon-blue" : ""
+                  }`}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 * index, duration: 0.3 }}
