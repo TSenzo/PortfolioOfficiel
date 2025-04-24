@@ -16,8 +16,7 @@ export default function Hero() {
     >
       <div className={`text-center transition-all duration-1000 ${loaded ? 'opacity-100' : 'opacity-0'}`}>
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
-          <span className="block mb-2 text-foreground">Je suis</span>
-          <span className="neon-text animate-pulse-neon">Enzo Dal Corso</span>
+          <span className="neon-text animate-pulse-neon">Je suis Enzo DAL CORSO</span>
         </h1>
         
         <p className="text-lg md:text-xl max-w-2xl mx-auto mb-10 text-muted-foreground">

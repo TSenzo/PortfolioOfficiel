@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface NavItem {
   label: string;
@@ -20,33 +21,40 @@ const navItems: NavItem[] = [
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeLink, setActiveLink] = useState<string>("");
 
+  // Scroll event to change the background color
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 10);
+      navItems.forEach((item) => {
+        const section = document.querySelector(item.href);
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          if (rect.top <= 0 && rect.bottom >= 0) {
+            setActiveLink(item.href);
+          }
+        }
+      });
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu when clicking a link
-  const handleNavClick = () => {
-    if (isMenuOpen) {
-      setIsMenuOpen(false);
-    }
-  };
+  const handleNavClick = () => setIsMenuOpen(false);
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${isScrolled ? "glass py-3" : "py-5"}`}>
+    <header
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${isScrolled ? "glass py-3 backdrop-blur-lg" : "py-5"
+        }`}
+    >
       <div className="container mx-auto px-4 flex justify-between items-center">
         {/* Logo */}
-        <a href="#home" className="text-2xl font-bold neon-text">EDC</a>
-        
+        <a href="#home" className="text-2xl font-bold neon-text text-foreground">
+          EDC
+        </a>
+
         {/* Desktop Menu */}
         <nav className="hidden md:flex items-center space-x-8">
           {navItems.map((item) => (
@@ -60,9 +68,9 @@ export default function Header() {
             </a>
           ))}
         </nav>
-        
-        {/* Mobile Menu Button */}
-        <div className="md:hidden flex items-center space-x-4">
+
+        {/* Mobile Toggle */}
+        <div className="md:hidden">
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="text-foreground hover:text-neon-blue transition-colors"
@@ -71,24 +79,46 @@ export default function Header() {
           </button>
         </div>
       </div>
-      
-      {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="md:hidden fixed inset-0 top-16 z-30 glass">
-          <nav className="flex flex-col items-center justify-center h-full space-y-8">
-            {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                onClick={handleNavClick}
-                className="text-xl font-medium text-foreground hover:text-neon-blue transition-colors"
+
+      {/* Mobile Menu Fullscreen */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ y: "-100%", opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: "-100%", opacity: 0 }}
+            transition={{ duration: 0.4 }}
+            className="fixed inset-0 z-50 glass backdrop-blur-lg h-screen overflow-y-auto shadow-lg"
+          >
+            {/* Close button */}
+            <div className="flex justify-end px-6 py-6">
+              <button
+                onClick={() => setIsMenuOpen(false)}
+                className="text-foreground hover:text-neon-blue transition-colors"
               >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-        </div>
-      )}
+                <X size={28} />
+              </button>
+            </div>
+
+            {/* Navigation links with animation */}
+            <div className="flex flex-col items-center justify-center space-y-6 pb-20">
+              {navItems.map((item, index) => (
+                <motion.a
+                  key={item.label}
+                  href={item.href}
+                  onClick={handleNavClick}
+                  className={`text-xl font-medium text-foreground hover:text-neon-blue transition-colors ${activeLink === item.href ? "text-neon-blue" : ""}`}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 * index, duration: 0.3 }}
+                >
+                  {item.label}
+                </motion.a>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
