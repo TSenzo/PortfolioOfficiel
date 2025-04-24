@@ -61,7 +61,7 @@ export default function Header() {
             <a
               key={item.label}
               href={item.href}
-              className="relative text-foreground hover:text-neon-blue transition-colors after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-neon-blue after:transition-all hover:after:w-full"
+              className="relative text-white hover:text-neon-blue transition-colors after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-neon-blue after:transition-all hover:after:w-full"
               onClick={handleNavClick}
             >
               {item.label}
