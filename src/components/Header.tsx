@@ -47,7 +47,7 @@ export default function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        isScrolled ? "bg-black/95 py-3 backdrop-blur-lg" : "bg-black/80 py-5"
+        isScrolled ? "bg-black/80 py-3 backdrop-blur-lg" : "bg-black/80 py-5"
       }`}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
@@ -90,7 +90,7 @@ export default function Header() {
             exit={{ y: "-100%", opacity: 0 }}
             transition={{ duration: 0.4 }}
             className={`fixed inset-0 z-50 ${
-              isScrolled ? "bg-black/95" : "bg-black/80"
+              isScrolled ? "bg-black/80" : "bg-black/80"
             } backdrop-blur-lg h-screen overflow-y-auto shadow-lg`}
           >
             {/* Close button */}
